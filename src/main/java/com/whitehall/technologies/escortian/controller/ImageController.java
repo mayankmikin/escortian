@@ -10,18 +10,29 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
-
-@CrossOrigin(origins = "http://localhost:4200")
+import static com.whitehall.technologies.escortian.constants.Constants.API_URLS;
+import static com.whitehall.technologies.escortian.constants.Constants.FileLocations;
+@CrossOrigin(origins = {"http://localhost:4200","https://escortian-front.herokuapp.com/"})
 @RestController
 public class ImageController {
-	@GetMapping(value = "/api/image/{imagename}")
+	@GetMapping(value =API_URLS.GET_IMAGE+"/{imagename}")
     public ResponseEntity<InputStreamResource> getImage(@PathVariable String imagename) throws IOException {
  
-        ClassPathResource imgFile = new ClassPathResource("static/images/"+imagename+".jpg");
+        ClassPathResource imgFile = new ClassPathResource(FileLocations.getpath+imagename);
  
         return ResponseEntity
                 .ok()
                 .contentType(MediaType.IMAGE_PNG)
+                .body(new InputStreamResource(imgFile.getInputStream()));
+    }
+	@GetMapping(value =API_URLS.GET_IMAGE+"/{profilename}/{imagename}")
+    public ResponseEntity<InputStreamResource> getImageWithProfile(@PathVariable String profilename,@PathVariable String imagename) throws IOException {
+ 
+        ClassPathResource imgFile = new ClassPathResource(FileLocations.getpath+profilename+"/"+imagename);
+ 
+        return ResponseEntity
+                .ok()
+                .contentType(MediaType.IMAGE_JPEG)
                 .body(new InputStreamResource(imgFile.getInputStream()));
     }
 }

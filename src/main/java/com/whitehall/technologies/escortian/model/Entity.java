@@ -20,6 +20,8 @@ public class Entity
 	@Field(type = FieldType.Text)
 	private List<String> time_slot_available;
 
+	@Field(type = FieldType.Text)
+	private Images images;
 	
 	public String getName() {
 		return name;
@@ -57,6 +59,14 @@ public class Entity
 	public void setTime_slot_available(List<String> time_slot_available) {
 		this.time_slot_available = time_slot_available;
 	}
+	public Images getImages() {
+		return images;
+	}
+	public void setImages(Images images) {
+		this.images = images;
+	}
+	
+	
 	
 	
 	
