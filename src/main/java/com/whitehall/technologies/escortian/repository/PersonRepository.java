@@ -19,8 +19,8 @@ import com.whitehall.technologies.escortian.model.Person;
 @RepositoryRestResource(collectionResourceRel = "person", path = "person")
 public interface PersonRepository extends ElasticsearchCrudRepository<Person, String> {
 
-	 @Query("{\"bool\": {\"filter\": [{\"bool\": {\"should\":[{\"nested\": {\"query\":\"?0\"}}]}}")
-	    Page<Person> findByAuthorsNameUsingCustomQuery(String name, Pageable pageable);
+	 
+	    Page<Person> findByEntityName(String name, Pageable pageable);
 
 	   /* @Query("{\"bool\": {\"must\": {\"match_all\": {}}, \"filter\": {\"term\": {\"tags\": \"?0\" }}}}")
 	    Page<Person> findByFilteredTagQuery(String tag, Pageable pageable);

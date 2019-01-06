@@ -14,12 +14,13 @@ public class Entity
 	@Field(type = FieldType.Text)
 	private String about_me;
 	@Field(type = FieldType.Text)
+	private String contact_no;
+	@Field(type = FieldType.Text)
 	private List<String> languages;
 	@Field(type = FieldType.Text)
 	private List<String> location_availablity;
 	@Field(type = FieldType.Text)
 	private List<String> time_slot_available;
-
 	@Field(type = FieldType.Text)
 	private Images images;
 	
@@ -64,6 +65,12 @@ public class Entity
 	}
 	public void setImages(Images images) {
 		this.images = images;
+	}
+	public String getContact_no() {
+		return contact_no;
+	}
+	public void setContact_no(String contact_no) {
+		this.contact_no = contact_no;
 	}
 	
 	
